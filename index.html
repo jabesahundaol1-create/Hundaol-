@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 9 Subject Grid</title>
+
+<style>
+
+/* BODY STYLE */
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:linear-gradient(135deg,#4e73df,#1cc88a);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+/* MAIN CONTAINER */
+.container{
+    width:95%;
+    max-width:1200px;
+}
+
+/* TITLE */
+h1{
+    text-align:center;
+    color:white;
+    margin-bottom:25px;
+}
+
+/* GRID STYLE */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    justify-content:center;
+}
+
+/* GRID BOX */
+.box{
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.4s;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+.box:hover{
+    transform:translateY(-8px);
+    background:#f8f9fc;
+}
+
+/* OUTPUT SECTION */
+.output{
+    margin-top:30px;
+    background:white;
+    padding:30px;
+    border-radius:30px;
+    min-height:140px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.3);
+    text-align:center;
+    transition:0.4s;
+}
+
+/* TEXT STYLE */
+.subject-text{
+    font-size:18px;
+    margin-bottom:20px;
+    font-weight:500;
+    color:#333;
+}
+
+/* IMAGE STYLE */
+.subject-image{
+    width:260px;
+    border-radius:25px;
+    border:5px solid #4e73df;
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    transition:0.4s;
+}
+
+.subject-image:hover{
+    transform:scale(1.07);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+@media(max-width:500px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Grade 9 Subjects</h1>
+
+    <div class="grid">
+        <div class="box" onclick="showSubject('English')">English</div>
+        <div class="box" onclick="showSubject('Math')">Math</div>
+        <div class="box" onclick="showSubject('Biology')">Biology</div>
+        <div class="box" onclick="showSubject('Chemistry')">Chemistry</div>
+        <div class="box" onclick="showSubject('Physics')">Physics</div>
+        <div class="box" onclick="showSubject('History')">History</div>
+        <div class="box" onclick="showSubject('Geography')">Geography</div>
+        <div class="box" onclick="showSubject('ICT')">ICT</div>
+        <div class="box" onclick="showSubject('Civics')">Civics</div>
+        <div class="box" onclick="showSubject('Economics')">Economics</div>
+        <div class="box" onclick="showSubject('Art')">Art</div>
+        <div class="box" onclick="showSubject('Music')">Music</div>
+        <div class="box" onclick="showSubject('Sport')">Sport</div>
+        <div class="box" onclick="showSubject('Amharic')">Amharic</div>
+        <div class="box" onclick="showSubject('French')">French</div>
+        <div class="box" onclick="showSubject('Others')">Others</div>
+    </div>
+
+    <div class="output" id="outputBox">
+        Click a subject to see details.
+    </div>
+</div>
+
+<script>
+
+function showSubject(subject){
+
+    let output = document.getElementById("outputBox");
+    output.innerHTML = "";
+
+    if(subject === "Math"){
+
+        let text = document.createElement("p");
+        text.innerText =
+        "Mathematics develops logical thinking, algebra skills, and strong problem-solving ability.";
+        text.classList.add("subject-text");
+
+        let img = document.createElement("img");
+        img.src = "math.jpg";  // Change if your image name is different
+        img.classList.add("subject-image");
+
+        output.appendChild(text);
+        output.appendChild(img);
+    }
+
+    else if(subject === "English"){
+        output.innerText =
+        "English improves communication, grammar, reading and writing skills.";
+    }
+
+    else if(subject === "Biology"){
+        output.innerText =
+        "Biology studies living organisms, cells, plants and human systems.";
+    }
+
+    else if(subject === "Chemistry"){
+        output.innerText =
+        "Chemistry explains chemical reactions, elements and laboratory experiments.";
+    }
+
+    else if(subject === "Physics"){
+        output.innerText =
+        "Physics studies motion, force, energy and laws of nature.";
+    }
+
+    else if(subject === "History"){
+        output.innerText =
+        "History helps understand past civilizations and world events.";
+    }
+
+    else if(subject === "Geography"){
+        output.innerText =
+        "Geography studies maps, landforms, climate and environment.";
+    }
+
+    else if(subject === "ICT"){
+        output.innerText =
+        "ICT teaches computer skills, programming and digital technology.";
+    }
+
+    else if(subject === "Civics"){
+        output.innerText =
+        "Civics explains rights, duties and government systems.";
+    }
+
+    else if(subject === "Economics"){
+        output.innerText =
+        "Economics studies money, trade and financial systems.";
+    }
+
+    else if(subject === "Art"){
+        output.innerText =
+        "Art develops creativity, imagination and drawing skills.";
+    }
+
+    else if(subject === "Music"){
+        output.innerText =
+        "Music teaches rhythm, instruments and creativity.";
+    }
+
+    else if(subject === "Sport"){
+        output.innerText =
+        "Sport improves physical fitness, teamwork and discipline.";
+    }
+
+    else if(subject === "Amharic"){
+        output.innerText =
+        "Amharic develops national language and literature skills.";
+    }
+
+    else if(subject === "French"){
+        output.innerText =
+        "French improves foreign language communication.";
+    }
+
+    else if(subject === "Others"){
+        output.innerText =
+        "Other subjects support overall academic development.";
+    }
+
+}
+
+</script>
+
+</body>
+</html>
