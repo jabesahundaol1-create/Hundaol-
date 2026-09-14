@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        School Learning & Examination System
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- ================================================= -->
+<!-- HEADER -->
+<!-- ================================================= -->
+
+<header>
+
+    <h1>
+        School Learning & Examination System
+    </h1>
+
+    <p>
+        Online Learning • Quiz • Results • Communication
+    </p>
+
+</header>
+
+
+
+<main>
+
+
+<!-- ================================================= -->
+<!-- HOME PAGE -->
+<!-- ================================================= -->
+
+<section
+    id="homePage"
+    class="page active"
+>
+
+    <div class="hero">
+
+        <h2>
+            Welcome
+        </h2>
+
+        <p>
+            Learning and examination platform
+            for teachers and students.
+        </p>
+
+    </div>
+
+
+
+    <!-- ROLE CARDS -->
+
+    <div class="role-container">
+
+
+        <!-- TEACHER -->
+
+        <div class="role-card">
+
+            <div class="big-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                Teacher
+            </h3>
+
+            <p>
+                Create quizzes, view students
+                and results.
+            </p>
+
+            <button
+                type="button"
+                onclick="showPage('teacherRegister')"
+            >
+                Teacher Registration
+            </button>
+
+        </div>
+
+
+
+        <!-- STUDENT -->
+
+        <div class="role-card">
+
+            <div class="big-icon">
+                👨‍🎓
+            </div>
+
+            <h3>
+                Student
+            </h3>
+
+            <p>
+                Take quizzes and view your results.
+            </p>
+
+            <button
+                type="button"
+                onclick="showPage('studentRegister')"
+            >
+                Student Registration
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- LOGIN -->
+    <!-- ================================================= -->
+
+    <div class="login-card">
+
+        <h2>
+            Login
+        </h2>
+
+        <p>
+            If you already have an account,
+            login here.
+        </p>
+
+
+        <label for="loginRole">
+            Login As
+        </label>
+
+        <select id="loginRole">
+
+            <option value="student">
+                Student
+            </option>
+
+            <option value="teacher">
+                Teacher
+            </option>
+
+        </select>
+
+
+        <label for="loginEmail">
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Email"
+        >
+
+
+        <label for="loginPassword">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+        >
+
+
+        <button
+            type="button"
+            onclick="login()"
+        >
+            Login
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- TEACHER REGISTRATION -->
+<!-- ================================================= -->
+
+<section
+    id="teacherRegister"
+    class="page"
+>
+
+    <div class="form-box">
+
+        <h2>
+            👨‍🏫 Teacher Registration
+        </h2>
+
+        <p>
+            Create your teacher account.
+        </p>
+
+
+        <label for="teacherName">
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            id="teacherName"
+            placeholder="Enter your full name"
+            required
+        >
+
+
+        <label for="teacherEmail">
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="teacherEmail"
+            placeholder="example@gmail.com"
+            required
+        >
+
+
+        <label for="teacherPassword">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="teacherPassword"
+            placeholder="Create a password"
+            required
+        >
+
+
+        <label for="teacherSchool">
+            School
+        </label>
+
+        <input
+            type="text"
+            id="teacherSchool"
+            placeholder="Enter school name"
+            required
+        >
+
+
+        <label for="teacherSubject">
+            Subject
+        </label>
+
+        <input
+            type="text"
+            id="teacherSubject"
+            placeholder="Example: Mathematics"
+            required
+        >
+
+
+        <label for="teacherPhoto">
+            Profile Photo
+        </label>
+
+        <input
+            type="file"
+            id="teacherPhoto"
+            accept="image/*"
+            required
+        >
+
+        <small>
+            Profile photo is required.
+            Maximum size: 5 MB.
+        </small>
+
+
+        <div
+            id="teacherPhotoPreviewContainer"
+            style="
+                display:none;
+                text-align:center;
+                margin:15px 0;
+            "
+        >
+
+            <img
+                id="teacherPhotoPreview"
+                src=""
+                alt="Teacher Profile Photo"
+                style="
+                    width:120px;
+                    height:120px;
+                    object-fit:cover;
+                    border-radius:50%;
+                    border:3px solid #ddd;
+                "
+            >
+
+        </div>
+
+
+        <button
+            type="button"
+            onclick="registerTeacher()"
+            class="success"
+        >
+            👨‍🏫 Register as Teacher
+        </button>
+
+
+        <button
+            type="button"
+            onclick="showPage('homePage')"
+            class="secondary"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- STUDENT REGISTRATION -->
+<!-- ================================================= -->
+
+<section
+    id="studentRegister"
+    class="page"
+>
+
+    <div class="form-box">
+
+        <h2>
+            👨‍🎓 Student Registration
+        </h2>
+
+        <p>
+            Create your student account.
+        </p>
+
+
+        <label for="studentName">
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            id="studentName"
+            placeholder="Enter your full name"
+            required
+        >
+
+
+        <label for="studentEmail">
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="studentEmail"
+            placeholder="example@gmail.com"
+            required
+        >
+
+
+        <label for="studentPassword">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="studentPassword"
+            placeholder="Create a password"
+            required
+        >
+
+
+        <label for="studentGrade">
+            Grade
+        </label>
+
+        <select
+            id="studentGrade"
+            required
+        >
+
+            <option value="">
+                -- Select Grade --
+            </option>
+
+            <option value="Grade 9">
+                Grade 9
+            </option>
+
+            <option value="Grade 10">
+                Grade 10
+            </option>
+
+            <option value="Grade 11">
+                Grade 11
+            </option>
+
+            <option value="Grade 12">
+                Grade 12
+            </option>
+
+        </select>
+
+
+        <label for="studentPhoto">
+            Profile Photo
+        </label>
+
+        <input
+            type="file"
+            id="studentPhoto"
+            accept="image/*"
+            required
+        >
+
+        <small>
+            Profile photo is required.
+            Maximum size: 5 MB.
+        </small>
+
+
+        <div
+            id="studentPhotoPreviewContainer"
+            style="
+                display:none;
+                text-align:center;
+                margin:15px 0;
+            "
+        >
+
+            <img
+                id="studentPhotoPreview"
+                src=""
+                alt="Student Profile Photo"
+                style="
+                    width:120px;
+                    height:120px;
+                    object-fit:cover;
+                    border-radius:50%;
+                    border:3px solid #ddd;
+                "
+            >
+
+        </div>
+
+
+        <button
+            type="button"
+            onclick="registerStudent()"
+            class="success"
+        >
+            👨‍🎓 Register as Student
+        </button>
+
+
+        <button
+            type="button"
+            onclick="showPage('homePage')"
+            class="secondary"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- TEACHER DASHBOARD -->
+<!-- ================================================= -->
+
+<section
+    id="teacherDashboard"
+    class="page"
+>
+
+    <div class="dashboard">
+
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h2>
+                    👨‍🏫 Teacher Dashboard
+                </h2>
+
+                <p id="teacherWelcome"></p>
+
+            </div>
+
+
+            <button
+                type="button"
+                onclick="logout()"
+                class="danger"
+            >
+                Logout
+            </button>
+
+        </div>
+
+
+
+        <div class="menu-grid">
+
+
+            <div
+                class="menu-card"
+                onclick="openCreateQuiz()"
+            >
+
+                <div class="menu-icon">
+                    📝
+                </div>
+
+                <h3>
+                    Create Quiz
+                </h3>
+
+                <p>
+                    Create a new examination
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="showMyQuizzes()"
+            >
+
+                <div class="menu-icon">
+                    📚
+                </div>
+
+                <h3>
+                    My Quizzes
+                </h3>
+
+                <p>
+                    View your quizzes
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="viewStudents()"
+            >
+
+                <div class="menu-icon">
+                    👥
+                </div>
+
+                <h3>
+                    Students
+                </h3>
+
+                <p>
+                    Registered students
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="viewResults()"
+            >
+
+                <div class="menu-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Results
+                </h3>
+
+                <p>
+                    Student examination results
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="openMessages()"
+            >
+
+                <div class="menu-icon">
+                    💬
+                </div>
+
+                <h3>
+                    Message
+                </h3>
+
+                <p>
+                    Talk with students
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="openVideoChat()"
+            >
+
+                <div class="menu-icon">
+                    🎥
+                </div>
+
+                <h3>
+                    Video Chat
+                </h3>
+
+                <p>
+                    Face-to-face communication
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="showQuizAttempts()"
+            >
+
+                <div class="menu-icon">
+                    🚨
+                </div>
+
+                <h3>
+                    Quiz Attempts
+                </h3>
+
+                <p>
+                    Students who left quizzes
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="saveSystemData()"
+            >
+
+                <div class="menu-icon">
+                    💾
+                </div>
+
+                <h3>
+                    Save
+                </h3>
+
+                <p>
+                    Save system data
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="logout()"
+            >
+
+                <div class="menu-icon">
+                    🚪
+                </div>
+
+                <h3>
+                    Logout
+                </h3>
+
+                <p>
+                    Exit account
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- CREATE QUIZ -->
+<!-- ================================================= -->
+
+<section
+    id="createQuiz"
+    class="page"
+>
+
+    <div class="form-box">
+
+        <h2>
+            📝 Create Quiz
+        </h2>
+
+
+        <label for="quizTitle">
+            Quiz Title
+        </label>
+
+        <input
+            type="text"
+            id="quizTitle"
+            placeholder="Quiz Title"
+        >
+
+
+        <hr>
+
+
+        <h3>
+            Question
+        </h3>
+
+
+        <label for="questionText">
+            Question
+        </label>
+
+        <textarea
+            id="questionText"
+            placeholder="Write your question here..."
+        ></textarea>
+
+
+        <label for="optionA">
+            Option A
+        </label>
+
+        <input
+            type="text"
+            id="optionA"
+            placeholder="Option A"
+        >
+
+
+        <label for="optionB">
+            Option B
+        </label>
+
+        <input
+            type="text"
+            id="optionB"
+            placeholder="Option B"
+        >
+
+
+        <label for="optionC">
+            Option C
+        </label>
+
+        <input
+            type="text"
+            id="optionC"
+            placeholder="Option C"
+        >
+
+
+        <label for="optionD">
+            Option D
+        </label>
+
+        <input
+            type="text"
+            id="optionD"
+            placeholder="Option D"
+        >
+
+
+        <label for="correctAnswer">
+            Correct Answer
+        </label>
+
+        <select id="correctAnswer">
+
+            <option value="">
+                Select Correct Answer
+            </option>
+
+            <option value="A">
+                A
+            </option>
+
+            <option value="B">
+                B
+            </option>
+
+            <option value="C">
+                C
+            </option>
+
+            <option value="D">
+                D
+            </option>
+
+        </select>
+
+
+        <button
+            type="button"
+            onclick="addQuestion()"
+            class="success"
+        >
+            ➕ Add Question
+        </button>
+
+
+        <div class="question-counter">
+
+            Questions added:
+
+            <strong id="questionCount">
+                0
+            </strong>
+
+        </div>
+
+
+        <button
+            type="button"
+            onclick="saveQuiz()"
+        >
+            💾 Save Quiz
+        </button>
+
+
+        <button
+            type="button"
+            onclick="showPage('teacherDashboard')"
+            class="secondary"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- MY QUIZZES -->
+<!-- ================================================= -->
+
+<section
+    id="myQuizzes"
+    class="page"
+>
+
+    <div class="form-box">
+
+        <h2>
+            📚 My Quizzes
+        </h2>
+
+        <div id="quizList"></div>
+
+        <button
+            type="button"
+            onclick="showPage('teacherDashboard')"
+            class="secondary"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- STUDENTS -->
+<!-- ================================================= -->
+
+<section
+    id="studentsPage"
+    class="page"
+>
+
+    <div class="form-box">
+
+        <h2>
+            👥 Registered Students
+        </h2>
+
+        <div id="studentList"></div>
+
+        <button
+            type="button"
+            onclick="showPage('teacherDashboard')"
+            class="secondary"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- TEACHER RESULTS -->
+<!-- ================================================= -->
+
+<section
+    id="teacherResults"
+    class="page"
+>
+
+    <div class="form-box">
+
+        <h2>
+            📊 Student Results
+        </h2>
+
+        <div id="teacherResultList"></div>
+
+        <button
+            type="button"
+            onclick="showPage('teacherDashboard')"
+            class="secondary"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- QUIZ ATTEMPTS -->
+<!-- ================================================= -->
+
+<section
+    id="quizAttemptsPage"
+    class="page"
+>
+
+    <div class="form-box">
+
+        <h2>
+            🚨 Quiz Attempts
+        </h2>
+
+        <p>
+            Students who leave or close a quiz.
+        </p>
+
+        <div id="quizAttemptsList"></div>
+
+        <button
+            type="button"
+            onclick="showPage('teacherDashboard')"
+            class="secondary"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- STUDENT DASHBOARD -->
+<!-- ================================================= -->
+
+<section
+    id="studentDashboard"
+    class="page"
+>
+
+    <div class="dashboard">
+
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h2>
+                    👨‍🎓 Student Dashboard
+                </h2>
+
+                <p id="studentWelcome"></p>
+
+            </div>
+
+
+            <button
+                type="button"
+                onclick="logout()"
+                class="danger"
+            >
+                Logout
+            </button>
+
+        </div>
+
+
+
+        <div class="menu-grid">
+
+
+            <div
+                class="menu-card"
+                onclick="showAvailableQuizzes()"
+            >
+
+                <div class="menu-icon">
+                    📝
+                </div>
+
+                <h3>
+                    Take Quiz
+                </h3>
+
+                <p>
+                    Start an examination
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="showStudentResults()"
+            >
+
+                <div class="menu-icon">
+                    📊
+                </div>
+
+                <h3>
+                    My Results
+                </h3>
+
+                <p>
+                    View your scores
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="openMessages()"
+            >
+
+                <div class="menu-icon">
+                    💬
+                </div>
+
+                <h3>
+                    Message
+                </h3>
+
+                <p>
+                    Talk with teacher
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="openVideoChat()"
+            >
+
+                <div class="menu-icon">
+                    🎥
+                </div>
+
+                <h3>
+                    Video Chat
+                </h3>
+
+                <p>
+                    Face-to-face communication
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="saveSystemData()"
+            >
+
+                <div class="menu-icon">
+                    💾
+                </div>
+
+                <h3>
+                    Save
+                </h3>
+
+                <p>
+                    Save your data
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="menu-card"
+                onclick="logout()"
+            >
+
+                <div class="menu-icon">
+                    🚪
+                </div>
+
+                <h3>
+                    Logout
+                </h3>
+
+                <p>
+                    Exit account
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- AVAILABLE QUIZZES -->
+<!-- ================================================= -->
+
+<section
+    id="availableQuizzes"
+    class="page"
+>
+
+    <div class="form-box">
+
+        <h2>
+            📝 Available Quizzes
+        </h2>
+
+        <div id="availableQuizList"></div>
+
+        <button
+            type="button"
+            onclick="showPage('studentDashboard')"
+            class="secondary"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- TAKE QUIZ -->
+<!-- ================================================= -->
+
+<section
+    id="takeQuiz"
+    class="page"
+>
+
+    <div class="form-box">
+
+        <h2 id="takingQuizTitle">
+            Quiz
+        </h2>
+
+        <div id="quizQuestions"></div>
+
+
+        <button
+            type="button"
+            onclick="submitQuiz()"
+            class="success"
+        >
+            Submit Quiz
+        </button>
+
+
+        <button
+            type="button"
+            onclick="showAvailableQuizzes()"
+            class="secondary"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- STUDENT RESULTS -->
+<!-- ================================================= -->
+
+<section
+    id="studentResults"
+    class="page"
+>
+
+    <div class="form-box">
+
+        <h2>
+            📊 My Results
+        </h2>
+
+        <div id="studentResultList"></div>
+
+
+        <button
+            type="button"
+            onclick="showPage('studentDashboard')"
+            class="secondary"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- MESSAGES -->
+<!-- ================================================= -->
+
+<section
+    id="messagesPage"
+    class="page"
+>
+
+    <div class="form-box">
+
+        <h2>
+            💬 Messages
+        </h2>
+
+
+        <!-- SELECT PERSON -->
+
+        <label for="messagePerson">
+            Select Person
+        </label>
+
+        <select id="messagePerson">
+
+            <option value="">
+                Select person
+            </option>
+
+        </select>
+
+
+        <!-- MESSAGE TEXT -->
+
+        <label for="messageText">
+            Message
+        </label>
+
+        <textarea
+            id="messageText"
+            placeholder="Write your message..."
+        ></textarea>
+
+
+        <!-- SEND -->
+
+        <button
+            type="button"
+            onclick="sendMessage()"
+            class="success"
+        >
+            📤 Send Message
+        </button>
+
+
+        <!-- REFRESH -->
+
+        <button
+            type="button"
+            onclick="showMessages()"
+        >
+            🔄 Refresh
+        </button>
+
+
+        <!-- MESSAGE LIST -->
+
+        <div
+            id="messageList"
+            class="message-list"
+        ></div>
+
+
+        <!-- BACK -->
+
+        <button
+            type="button"
+            onclick="goBackDashboard()"
+            class="secondary"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- VIDEO CHAT -->
+<!-- ================================================= -->
+
+<section id="videoChatPage" class="page">
+
+    <div class="form-box">
+
+        <h2>📹 Video Chat</h2>
+
+        <p>
+            Teacher and student can communicate face-to-face.
+        </p>
+
+        <div class="video-container">
+
+            <div class="video-box">
+
+                <h3>My Camera</h3>
+
+                <video
+                    id="localVideo"
+                    autoplay
+                    muted
+                    playsinline>
+                </video>
+
+            </div>
+
+
+            <div class="video-box">
+
+                <h3>Other Person</h3>
+
+                <video
+                    id="remoteVideo"
+                    autoplay
+                    playsinline>
+                </video>
+
+            </div>
+
+        </div>
+
+
+        <div class="video-controls">
+
+            <button
+                type="button"
+                onclick="startCamera()"
+                class="success">
+                📷 Start Camera
+            </button>
+
+
+            <button
+                type="button"
+                onclick="stopCamera()"
+                class="danger">
+                🛑 Stop Camera
+            </button>
+
+
+            <button
+                type="button"
+                onclick="startVideoCall()"
+                class="primary">
+                📞 Start Call
+            </button>
+
+
+            <button
+                type="button"
+                onclick="endVideoCall()"
+                class="danger">
+                ❌ End Call
+            </button>
+
+        </div>
+
+
+        <button
+            type="button"
+            onclick="goBackDashboard()"
+            class="secondary">
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+</main>
+
+
+
+<!-- ================================================= -->
+<!-- MESSAGE BOX -->
+<!-- ================================================= -->
+
+<div id="messageBox"></div>
+
+
+
+<!-- ================================================= -->
+<!-- FIREBASE -->
+<!-- ================================================= -->
+
+<script type="module">
+
+import {
+    initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    deleteUser
+}
+from
+"https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  collection,
+  query,
+  where,
+  updateDoc,
+  addDoc,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyByG0RweEcgR09wms9D-5xwNBAzhx-3PDo",
+
+    authDomain:
+        "oda-learning-system.firebaseapp.com",
+
+    projectId:
+        "oda-learning-system",
+
+    storageBucket:
+        "oda-learning-system.firebasestorage.app",
+
+    messagingSenderId:
+        "215196294756",
+
+    appId:
+        "1:215196294756:web:5dd7e9c22f19ff0a040971"
+
+};
+
+
+
+const app =
+    initializeApp(firebaseConfig);
+
+
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
+window.firebaseFunctions = {
+  auth,
+  db,
+
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  deleteUser,
+
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  collection,
+  query,
+  where,
+
+  updateDoc,
+  addDoc,
+  onSnapshot
+};
+
+
+</script>
+
+
+
+<!-- ================================================= -->
+<!-- MAIN JAVASCRIPT -->
+<!-- ================================================= -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
